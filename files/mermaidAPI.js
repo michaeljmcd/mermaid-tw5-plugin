@@ -38,13 +38,16 @@ var gitGraphRenderer = require('./diagrams/gitGraph/gitGraphRenderer');
 var gitGraphAst = require('./diagrams/gitGraph/gitGraphAst');
 var d3 = require('./d3');
 */
+// _exports is a conversion from mermaid to attempt to make the source
+// conversion easy
 var _exports= {};
-/*
-SVGElement.prototype.getTransformToElement = SVGElement.prototype.getTransformToElement || function(toElement) {
-        return toElement.getScreenCTM().inverse().multiply(this.getScreenCTM());
-    };
-    TODO: fixme
-    */
+
+// the check avoids node js errors
+if (typeof SVGElement !== 'undefined') {
+    SVGElement.prototype.getTransformToElement = SVGElement.prototype.getTransformToElement || function(toElement) {
+            return toElement.getScreenCTM().inverse().multiply(this.getScreenCTM());
+        };
+}
 /**
  * ## Configuration
  * These are the default options which can be overridden with the initialization call as in the example below:
@@ -571,7 +574,7 @@ exports.mermaidAPI = {
     render     : _exports.render,
     parse      : _exports.parse,
     initialize : _exports.initialize,
-    //detectType : utils.detectType,
+    //detectType : utils.detectType, //TODO: fixme
     parseError : _exports.parseError,
     getConfig  : _exports.getConfig
 };
