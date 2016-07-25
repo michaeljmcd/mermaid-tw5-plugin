@@ -1,18 +1,18 @@
 {
     "tiddlers": [
         {
-            "file": "mermaid.js",
-            "fields": {
-                "type": "application/javascript",
-                "title": "$:/plugins/michaeljmcd/mermaid/mermaid.js",
-                "module-type": "library"
-            }
-        },
-        {
             "file": "mermaidAPI.js",
             "fields": {
                 "type": "application/javascript",
                 "title": "$:/plugins/michaeljmcd/mermaid/mermaidAPI.js",
+                "module-type": "library"
+            }
+        },
+        {
+            "file": "logger.js",
+            "fields": {
+                "type": "application/javascript",
+                "title": "$:/plugins/michaeljmcd/mermaid/logger.js",
                 "module-type": "library"
             }
         }
