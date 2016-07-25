@@ -3,7 +3,7 @@ title: $:/plugins/michaeljmcd/mermaid/wrapper.js
 type: application/javascript
 module-type: widget
 
-FIXME
+Wrapper for Mermaid that provides a `<$mermaid>` widget.
 
 \*/
 (function(){
@@ -12,7 +12,8 @@ FIXME
 /*global $tw: false */
 "use strict";
 
-var Widget = require("$:/core/modules/widgets/widget.js").widget;
+var Widget = require("$:/core/modules/widgets/widget.js").widget,
+    mermaidAPI = require("$:/plugins/michaeljmcd/mermaid/mermaidAPI.js").mermaidAPI;
 
 var MermaidWidget = function(parseTreeNode, options) {
 	this.initialise(parseTreeNode,options);
@@ -27,14 +28,15 @@ MermaidWidget.prototype.render = function(parent, nextSibling) {
 	this.execute();
 
 	var div = this.document.createElement("div");
+	var source = this.getAttribute("text",this.parseTreeNode.text || "");
 
     var _insertSvg = function(svgCode, bindFunctions) {
         div.innerHTML = svgCode;
     };
 
     try {
-        //mermaid.render('test1', 'graph TB\na-->b', _insertSvg);
-        div.textContent = "I am here";
+        mermaidAPI.render('test1', source, _insertSvg);
+        // TODO: do something sensible with ID.
     } catch (ex) {
 		div.className = "tc-error";
 		div.textContent = ex;
