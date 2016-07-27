@@ -13,7 +13,11 @@ Wrapper for Mermaid that provides a `<$mermaid>` widget.
 "use strict";
 
 var Widget = require("$:/core/modules/widgets/widget.js").widget,
-    mermaidAPI = require("$:/plugins/michaeljmcd/mermaid/mermaidAPI.js").mermaidAPI;
+    mermaidAPI = null;
+
+if ($tw.browser) {
+    mermaidAPI = require("$:/plugins/michaeljmcd/mermaid/mermaidAPI.js");
+}
 
 var MermaidWidget = function(parseTreeNode, options) {
 	this.initialise(parseTreeNode,options);
