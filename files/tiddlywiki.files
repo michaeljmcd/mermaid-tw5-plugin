@@ -1,11 +1,21 @@
 {
     "tiddlers": [
         {
+
             "file": "mermaidAPI.min.js",
             "fields": {
                 "type": "application/javascript",
                 "title": "$:/plugins/michaeljmcd/mermaid/mermaidAPI.min.js",
                 "module-type": "library"
+            }
+        },
+        {
+
+            "file": "mermaid.dark.css",
+            "fields": {
+                "type": "text/css",
+                "title": "$:/plugins/michaeljmcd/mermaid/mermaid.dark.css",
+                "tags": "$:/tags/Stylesheet"
             }
         }
     ]

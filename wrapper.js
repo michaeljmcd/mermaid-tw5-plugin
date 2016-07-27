@@ -16,7 +16,7 @@ var Widget = require("$:/core/modules/widgets/widget.js").widget,
     mermaidAPI = null;
 
 if ($tw.browser) {
-    mermaidAPI = require("$:/plugins/michaeljmcd/mermaid/mermaidAPI.js");
+    mermaidAPI = require("$:/plugins/michaeljmcd/mermaid/mermaidAPI.min.js");
 }
 
 var MermaidWidget = function(parseTreeNode, options) {
@@ -49,6 +49,15 @@ MermaidWidget.prototype.render = function(parent, nextSibling) {
 	// Insert the div into the DOM
 	parent.insertBefore(div,nextSibling);
 	this.domNodes.push(div);
+};
+
+MermaidWidget.prototype.refresh = function(changedTiddlers) {
+	var changedAttributes = this.computeAttributes();
+	if(changedAttributes.text) {
+		this.refreshSelf();
+		return true;
+	}
+	return false;	
 };
 
 exports.mermaid = MermaidWidget;
